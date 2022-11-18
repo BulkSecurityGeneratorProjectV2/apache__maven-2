@@ -21,6 +21,7 @@ package org.apache.maven.profiles;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.util.List;
 
 import org.apache.maven.model.Activation;
@@ -248,7 +249,7 @@ public class DefaultProfileManagerTest
 
         org.apache.maven.model.ActivationFile activationFile = new org.apache.maven.model.ActivationFile();
 
-        File f = File.createTempFile( "activationTest", null );
+        File f = Files.createTempFile( "activationTest", null ).toFile();
         f.createNewFile();
         activationFile.setExists( f.getAbsolutePath() );
 

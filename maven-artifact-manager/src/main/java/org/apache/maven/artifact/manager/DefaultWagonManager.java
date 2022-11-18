@@ -62,6 +62,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.file.Files;
 import java.security.NoSuchAlgorithmException;
 import java.util.Collection;
 import java.util.HashMap;
@@ -331,7 +332,7 @@ public class DefaultWagonManager
                 String extension = (String) i.next();
 
                 // TODO: shouldn't need a file intermediatary - improve wagon to take a stream
-                File temp = File.createTempFile( "maven-artifact", null );
+                File temp = Files.createTempFile( "maven-artifact", null ).toFile();
                 temp.deleteOnExit();
                 FileUtils.fileWrite( temp.getAbsolutePath(), "UTF-8", (String) sums.get( extension ) );
 
